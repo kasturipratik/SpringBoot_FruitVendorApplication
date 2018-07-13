@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Fruits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div th:replace="base  ::adminNavlinks"></div>
+    <!---->
+ <div class="bg-light p-5 row">
+
+     <div class="col-sm-0 col-md-2">
+     </div>
+     <!---->
+     <div class="col-sm-12 col-md-8">
+         <h3 class="text-center p-5">Add Fruits to the menu</h3>
+         <form class="form-group" th:action="@{/processFruits}" th:object="${fruit}" method="post" enctype="multipart/form-data">
+             <input type="hidden" th:field="*{id}"/>
+             <!---->
+             <div class="row">
+                <div class="col-sm-12 col-md-6 mt-2">
+                    <label>Select Day</label>
+                    <select th:field="*{day}" class="form-control">
+                        <option th:each="dayName:${days}" th:value="${dayName.id}" th:text="${dayName. dayList}"></option>
+                    </select>
+                </div>
+                 <div class="col-sm-12 col-md-6 mt-2">
+                    <label>Name of the Fruit</label>
+                     <input type="text" th:field="*{fruitName}" class="form-control" placeholder="Fruit Name" required/>
+                 </div>
+                 <div class="col-sm-12 col-md-6 mt-2">
+                     <label>Fruit Image</label>
+                     <input type="file" name="file" class="form-control" placeholder="Fruit Name"/>
+                 </div>
+                 <div class="col-sm-12 col-md-6" align="center">
+                 </div>
+
+             </div>
+             <div class="mt-3" align="center">
+                 <input type="submit" value="Submit" class="btn btn-lg btn-warning"/>
+             </div>
+
+             <!---->
+         </form>
+     </div>
+<!---->
+     <div class="col-sm-0 col-md-2">
+
+     </div>
+ </div>
+
+
+
+
+
+    <!---->
+</div>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

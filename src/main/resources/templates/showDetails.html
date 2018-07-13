@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        img{
+            max-height: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div th:replace="base  ::navlinks"></div>
+    <!---->
+    <div class="p-4">
+        <h2 class="text-center h3 p-4">Fruit Vendor Application</h2>
+
+        <div class="row mt-3">
+            <div class="col-sm-12 col-md-4" th:each="fruit:${list}">
+                <h4 th:text="${fruit.day.dayList}"></h4>
+                <div class="card">
+                    <div class="card-head mt-2 " align="center">
+                        <img th:src="${fruit.image}" alt="fruit" class="img-fluid img-responsive "/>
+                    </div>
+                    <div class="card-body" align="center">
+                        <h5 th:text="${fruit.fruitName}"></h5>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

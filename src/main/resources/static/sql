@@ -1,0 +1,39 @@
+use fruits;
+
+select * from days;
+select * from time;
+select * from fruits;
+insert into days(id,day_list) values (1, "Sunday");
+insert into days(id,day_list) values (2, "Monday");
+insert into days(id,day_list) values (3, "Tuesday");
+
+
+insert into days(id,day_list) values (4, "Wednesday");
+insert into days(id,day_list) values (5, "Thursday");
+insert into days(id,day_list) values (6, "Firday");
+insert into days(id,day_list) values (7, "Saturday");
+
+
+insert into time values(1,"8:00 am");
+insert into time values(2,"8:30 am");
+insert into time values(3,"9:00 am");
+insert into time values(4,"9:30 am");
+insert into time values(5,"10:00 am");
+insert into time values(6,"10:30 am");
+insert into time values(7,"11:00 am");
+insert into time values(8,"11:30 am");
+insert into time values(9,"12:00 pm");
+insert into time values(10,"12:30 pm");
+insert into time values(11,"1:00 pm");
+insert into time values(12,"1:30 pm");
+insert into time values(13,"2:00 pm");
+insert into time values(14,"2:30 pm");
+insert into time values(15,"3:00 pm");
+insert into time values(16,"3:30 pm");
+insert into time values(17,"4:00 pm");
+insert into time values(18,"4:30 pm");
+insert into time values(19,"5:00 pm");
+insert into time values(20,"5:30 pm");
+insert into time values(21,"6:00 pm");
+insert into time values(22,"6:30 pm");
+insert into time values(23,"7:00 pm");

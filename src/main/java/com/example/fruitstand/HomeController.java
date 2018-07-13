@@ -22,6 +22,7 @@ public class HomeController {
 
     @Autowired
     FruitsRepository fruitsRepository;
+
 /*main page that customer can view*/
     @RequestMapping("/")
     public String index(Model model){
@@ -99,19 +100,8 @@ public class HomeController {
      model.addAttribute("fruitList", fruitsRepository.findAll());
      return "/admin";
  }
-/*update time for open and close*/
-    @RequestMapping("/updateTime")
-    public String updateTime( Model model){
 
-        model.addAttribute("updateTimes", daysRepository.findAll());
-        return "updateTime";
-    }
 
-    @PostMapping("/processUpdate")
-    public String processUpdate(@ModelAttribute Days days){
-        daysRepository.save(days);
-        return "admin";
-    }
 
     @RequestMapping("/show/{id}")
     public String showList(@PathVariable("id") long id, Model model){
@@ -119,10 +109,22 @@ public class HomeController {
         return "showDetails";
     }
 
+    /*update time for open and close*/
+    @RequestMapping("/updateTime")
+    public String updateTime( Model model){
+        model.addAttribute("updateTimes", daysRepository.findAll());
+        return "updateTime";
+    }
+
     @RequestMapping("/display/{id}")
     public String showListIndex(@PathVariable("id") long id, Model model){
-        model.addAttribute("listIndex", fruitsRepository.findByDay_Id(id));
 
-        return "index";
+        model.addAttribute("listIndex", daysRepository.findById(id));
+        return "updateForm";
+    }
+    @PostMapping("/processUpdate")
+    public String processUpdate(@ModelAttribute Days days){
+        daysRepository.save(days);
+        return "admin";
     }
 }

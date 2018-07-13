@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Update Business Time</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
@@ -14,22 +14,18 @@
     <div class="container">
         <h3 class="p-4">Update Business Time Portal</h3>
         <div class="row p-5 bg-light">
+            <div class="col-sm-0 col-md-3"> </div>
+            <div class="col-sm-12 col-md-6">
+                <form class="form-group" th:action="@{/processUpdate}" th:object="${update}">
+                    <input type="hidden" th:field="*{id}">
 
-            <div class="col-sm-12 col-md-4" th:each="update:${updateTimes}">
-                <div  class="jumbotron">
-                    <h3 th:text="${update.dayList}"></h3>
-                    <a th:href="@{/display/{id}(id=${update.id})}" class="btn btn-lg btn-secondary mt-3 text-white" >Update Business Time</a>
-                </div>
-
-
+                </form>
             </div>
+            <div class="col-sm-0 col-md-3"> </div>
+
         </div>
 
     </div>
-
-
-
-
     <!---->
 </div>
 <div th:replace="base :: scripts"></div>

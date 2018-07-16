@@ -85,33 +85,34 @@ log in processing
     }
         return "redirect:/admin";
     }
-/*
-admin page
-*/
+
+    /*
+    admin page
+    */
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("fruitList", fruitsRepository.findAll());
         return "admin";
     }
-/*
-update the fruit list
-*/
-    @RequestMapping("/update/{id}")
-    public String updateFruits(@PathVariable("id") long id, Model model){
-        model.addAttribute("days", daysRepository.findAll());
-        model.addAttribute("fruit", fruitsRepository.findById(id));
-        return "addFruits";
+    /*
+    update the fruit list
+    */
+        @RequestMapping("/update/{id}")
+        public String updateFruits(@PathVariable("id") long id, Model model){
+            model.addAttribute("days", daysRepository.findAll());
+            model.addAttribute("fruit", fruitsRepository.findById(id));
+            return "addFruits";
 
-    }
- /*
- delete fruit list
- */
- @RequestMapping("/delete/{id}")
- public String deleteFruit(@PathVariable("id") long id,Model model){
-     fruitsRepository.deleteById(id);
-     model.addAttribute("fruitList", fruitsRepository.findAll());
-     return "/admin";
- }
+        }
+     /*
+     delete fruit list
+     */
+     @RequestMapping("/delete/{id}")
+     public String deleteFruit(@PathVariable("id") long id,Model model){
+         fruitsRepository.deleteById(id);
+         model.addAttribute("fruitList", fruitsRepository.findAll());
+         return "/admin";
+     }
 
 
     @RequestMapping("/show/{id}")
@@ -120,21 +121,21 @@ update the fruit list
         return "showDetails";
     }
 
-/*
-update time for open and close
-*/
-@RequestMapping("/updateTime")
-public String updateMenu(Model model){
-    model.addAttribute("list", daysRepository.findAll());
-    return "updateTime";
-}
+    /*
+    update time for open and close
+    */
+    @RequestMapping("/businessTime")
+    public String updateMenu(Model model){
+        model.addAttribute("list", daysRepository.findAll());
+        return "updateTime";
+    }
+
     @RequestMapping("/updateForm")
     public String update(Model model){
         model.addAttribute("update", new Days());
         model.addAttribute("list", daysRepository.findAll());
         return "updateForm";
     }
-
 
     @RequestMapping("/updates/{id}")
     public String update(@PathVariable("id") long id, Model model){

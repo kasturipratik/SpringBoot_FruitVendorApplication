@@ -18,8 +18,8 @@ public class Days {
     private String closeTime;
 
 
-    @OneToMany(mappedBy = "day",orphanRemoval = true,
-            cascade = CascadeType.REMOVE)
+
+    @OneToMany(mappedBy = "day",cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
     private Set<Fruits> fruits;
 

@@ -19,10 +19,9 @@
                 <form class="form-group" th:object="${update}" th:action="@{/processUpdate}" action="#" method="post">
                     <input type="hidden" th:field="*{id}"/>
                     <label>Day</label>
-                       <!-- <select th:field="*{dayList}" class="form-control">
+                        <select th:field="*{dayList}" class="form-control">
                             <option th:each="days:${list}" th:text="${days.dayList}" th:value="${days.dayList}"></option>
-                        </select>-->
-                    <input type="text" th:field="*{dayList}" class="from-control" placeholder="Day"/>
+                        </select>
                     <label>Open Time</label>
                     <input th:field="*{openTime}" class="form-control" type="text" placeholder="Ex:  10 am"/>
                     <label>Close Time</label>

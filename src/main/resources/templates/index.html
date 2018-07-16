@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-6">
                         <h5 th:text="${day.dayList}"></h5>
-                        <h6>Open 10am - 6pm Close</h6>
+                        <h6 th:inline="text">Open [[${day.openTime}]] - [[${day.closeTime}]] Close</h6>
                     </div>
                     <div class="col-6">
                         <a th:href="@{/show/{id}(id=${day.id})}" class="btn btn-lg btn-success mt-3 text-white">Show Fruits</a>

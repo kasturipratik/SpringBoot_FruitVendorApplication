@@ -13,17 +13,29 @@
     <!---->
     <div class="container">
         <h3 class="p-4">Update Business Time Portal</h3>
-        <div class="row p-5 bg-light">
 
-            <div class="col-sm-12 col-md-4" th:each="update:${updateTimes}">
-                <div  class="jumbotron">
-                    <h3 th:text="${update.dayList}"></h3>
-                    <a th:href="@{/display/{id}(id=${update.id})}" class="btn btn-lg btn-secondary mt-3 text-white" >Update Business Time</a>
-                </div>
-
-
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Day</th>
+                    <th>Opening Time</th>
+                    <th>Closing TIme</th>
+                    <th>Update Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="display:${list}">
+                    <td th:text="${display.id}"></td>
+                    <td th:text="${display.dayList}"></td>
+                    <td th:text="${display.openTime}"></td>
+                    <td th:text="${display.closeTime}"></td>
+                    <td>
+                        <a th:href="@{/updates/{id}(id=${display.id})}" class="btn btn-secondary btn-sm text-white">Update Time</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 

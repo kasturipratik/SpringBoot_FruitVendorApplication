@@ -23,14 +23,18 @@ public class HomeController {
     @Autowired
     FruitsRepository fruitsRepository;
 
-/*main page that customer can view*/
+/*
+main page that customer can view
+*/
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("days", daysRepository.findAll());
 
         return "index";
     }
-/*log in processing*/
+/*
+log in processing
+*/
     @RequestMapping("/login")
     public String login(Model model){
         model.addAttribute("invalid","");
@@ -51,7 +55,9 @@ public class HomeController {
             return "login";
         }
     }
- /*adding and posting fruit*/
+ /*
+ adding and posting fruit
+ */
     @RequestMapping("/addFruits")
     public String addFruits(Model model){
         model.addAttribute("fruit", new Fruits());
@@ -79,13 +85,17 @@ public class HomeController {
     }
         return "redirect:/admin";
     }
-/*admin page*/
+/*
+admin page
+*/
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("fruitList", fruitsRepository.findAll());
         return "admin";
     }
-/*update the fruit list*/
+/*
+update the fruit list
+*/
     @RequestMapping("/update/{id}")
     public String updateFruits(@PathVariable("id") long id, Model model){
         model.addAttribute("days", daysRepository.findAll());
@@ -93,7 +103,9 @@ public class HomeController {
         return "addFruits";
 
     }
- /*delete fruit list*/
+ /*
+ delete fruit list
+ */
  @RequestMapping("/delete/{id}")
  public String deleteFruit(@PathVariable("id") long id,Model model){
      fruitsRepository.deleteById(id);
@@ -102,29 +114,40 @@ public class HomeController {
  }
 
 
-
     @RequestMapping("/show/{id}")
     public String showList(@PathVariable("id") long id, Model model){
         model.addAttribute("list", fruitsRepository.findByDay_Id(id));
         return "showDetails";
     }
 
-    /*update time for open and close*/
-    @RequestMapping("/updateTime")
-    public String updateTime( Model model){
-        model.addAttribute("updateTimes", daysRepository.findAll());
-        return "updateTime";
-    }
-
-    @RequestMapping("/display/{id}")
-    public String showListIndex(@PathVariable("id") long id, Model model){
-
-        model.addAttribute("listIndex", daysRepository.findById(id));
+/*
+update time for open and close
+*/
+@RequestMapping("/updateTime")
+public String updateMenu(Model model){
+    model.addAttribute("list", daysRepository.findAll());
+    return "updateTime";
+}
+    @RequestMapping("/updateForm")
+    public String update(Model model){
+        model.addAttribute("update", new Days());
+        model.addAttribute("list", daysRepository.findAll());
         return "updateForm";
     }
+
+
+    @RequestMapping("/updates/{id}")
+    public String update(@PathVariable("id") long id, Model model){
+        model.addAttribute("update", daysRepository.findById(id));
+        model.addAttribute("list", daysRepository.findAll());
+        return "updateForm";
+    }
+
     @PostMapping("/processUpdate")
-    public String processUpdate(@ModelAttribute Days days){
+    public String processUpdate(@ModelAttribute("update") Days days,Model model){
         daysRepository.save(days);
-        return "admin";
+        model.addAttribute("list", daysRepository.findAll());
+        return "updateTime";
     }
 }
+

@@ -14,11 +14,8 @@ public class Days {
     private long id;
 
     private String dayList;
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="time_id")
-    private Time time;
+    private String openTime;
+    private String closeTime;
 
 
     @OneToMany(mappedBy = "day",orphanRemoval = true,
@@ -42,7 +39,21 @@ public class Days {
         this.dayList = dayList;
     }
 
+    public String getOpenTime() {
+        return openTime;
+    }
 
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
+    }
+
+    public String getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
+    }
 
     public Set<Fruits> getFruits() {
         return fruits;

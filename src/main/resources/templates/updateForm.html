@@ -16,9 +16,15 @@
         <div class="row p-5 bg-light">
             <div class="col-sm-0 col-md-3"> </div>
             <div class="col-sm-12 col-md-6">
-                <form class="form-group" th:action="@{/processUpdate}" th:object="${update}">
-                    <input type="hidden" th:field="*{id}">
-
+                form class="form-group" th:object="${update}" th:action="@{/processUpdate}" action="#" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <label>Day</label>
+                <input th:field="*{dayList}" class="form-control" type="text" placeholder="Days" disabled/>
+                <label>Open Time</label>
+                <input th:field="*{openTime}" class="form-control" type="text" placeholder="Ex:  10 am"/>
+                <label>Close Time</label>
+                <input th:field="*{closeTime}" class="form-control" type="text" placeholder="Ex:  10 am"/>
+                <input type="submit" value="Submit" class="btn-lg btn mt-3"/>
                 </form>
             </div>
             <div class="col-sm-0 col-md-3"> </div>

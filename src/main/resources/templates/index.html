@@ -15,15 +15,19 @@
         <h2 class="text-center h3">Fruit Vendor Application</h2>
 
     <div class="row">
-        <div class="col-sm-12 col-md-6 mt-3" th:each="day:${days}">
+        <div class="col-sm-12 col-md-6 mt-3" th:each="dayName:${days}">
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-6">
-                        <h5 th:text="${day.dayList}"></h5>
-                        <h6 th:inline="text">Open [[${day.openTime}]] - [[${day.closeTime}]] Close</h6>
+                        <h5 th:text="${dayName.dayList}"></h5>
+                        <h6 th:inline="text">Open [[${dayName.openTime}]] - [[${dayName.closeTime}]] Close</h6>
+                        <div th:each="f:${fruits}" th:if="${f.day.id == dayName.id}">
+                            <img th:src="${f.image}" alt="fruits" width="45" height="45"/>&nbsp;<span th:text="${f.fruitName}"></span><br/>
+                        </div>
+
                     </div>
                     <div class="col-6">
-                        <a th:href="@{/show/{id}(id=${day.id})}" class="btn btn-lg btn-success mt-3 text-white">Show Fruits</a>
+                        <a th:href="@{/show/{id}(id=${dayName.id})}" class="btn btn-lg btn-success mt-3 text-white">Show Fruits</a>
                     </div>
                 </div>
 

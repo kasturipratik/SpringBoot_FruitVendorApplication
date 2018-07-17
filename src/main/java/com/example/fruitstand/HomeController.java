@@ -29,7 +29,7 @@ main page that customer can view
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("days", daysRepository.findAll());
-
+        model.addAttribute("fruits", fruitsRepository.findAll());
         return "index";
     }
 /*
@@ -118,6 +118,7 @@ log in processing
     @RequestMapping("/show/{id}")
     public String showList(@PathVariable("id") long id, Model model){
         model.addAttribute("list", fruitsRepository.findByDay_Id(id));
+        model.addAttribute("dayName", daysRepository.findById(id));
         return "showDetails";
     }
 

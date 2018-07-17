@@ -18,10 +18,12 @@
     <!---->
     <div class="p-4">
         <h2 class="text-center h3 p-4">Fruit Vendor Application</h2>
+        <div th:each="d:${dayName}">
+            <h4 th:text="${d.dayList}"></h4>
+        </div>
 
         <div class="row mt-3">
             <div class="col-sm-12 col-md-4" th:each="fruit:${list}">
-                <h4 th:text="${fruit.day.dayList}"></h4>
                 <div class="card">
                     <div class="card-head mt-2 " align="center">
                         <img th:src="${fruit.image}" alt="fruit" class="img-fluid img-responsive "/>
@@ -34,7 +36,7 @@
             </div>
 
         </div>
-
     </div>
+</div>
 </body>
 </html>
